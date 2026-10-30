@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ode to Holli — Cirone.org</title>
+  <meta name="description" content="A timeless tribute to Holli — Sonnet 65, original music, and cherished memories." />
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpg" />
+
+  <!-- Google Fonts for Editorial Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --bg-card: rgba(22, 26, 36, 0.7);
+      --bg-card-border: rgba(212, 175, 55, 0.2);
+      --accent: #d4af37;
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --accent-light: #f3df8a;
+      --text-main: #f0ede6;
+      --text-muted: #9ba1b0;
+      --text-soft: #c8cbd4;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-display: 'Cinzel', serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 85% 40%, rgba(130, 90, 40, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 15% 80%, rgba(70, 90, 130, 0.06) 0%, transparent 50%);
+      min-height: 100vh;
+    }
+
+    /* Ambient floating stars/glow */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(12, 14, 20, 0.75);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.1rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-light);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 6.5rem 1.5rem 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title span {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-soft);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .divider-gold {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 2rem auto;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    /* Poem Card */
+    .poem-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 3.5rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+
+    .poem-card::before {
+      content: '“';
+      position: absolute;
+      top: 10px;
+      left: 30px;
+      font-family: var(--font-serif);
+      font-size: 6rem;
+      color: rgba(212, 175, 55, 0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .poem-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .poem-author {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    .poem-stanza {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      line-height: 1.95;
+      color: #ede9e1;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .poem-stanza .drop-cap {
+      font-size: 2.8rem;
+      line-height: 0.8;
+      font-weight: 600;
+      color: var(--accent-light);
+      float: none;
+      display: inline;
+    }
+
+    .poem-couplet {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-style: italic;
+      line-height: 2;
+      color: var(--accent-light);
+      text-align: center;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(212, 175, 55, 0.3);
+      margin-top: 2rem;
+    }
+
+    /* Video Theater Card */
+    .video-theater {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.08);
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      padding: 1.8rem 2.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(15, 18, 25, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .video-caption h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .video-caption p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: 50px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--accent);
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .video-btn:hover {
+      background: var(--accent);
+      color: #0c0e14;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Photo Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #151821;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      group: relative;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .gallery-img-container {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(12, 14, 20, 0.85) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .gallery-info h4 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .gallery-info p {
+      font-size: 0.85rem;
+      color: var(--accent-light);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 10, 14, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2.5rem;
+      font-size: 2rem;
+      color: var(--text-main);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: var(--accent);
+    }
+
+    /* Placeholder card for user to add more */
+    .add-more-card {
+      border: 2px dashed rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/5;
+      padding: 2rem;
+      text-align: center;
+      background: rgba(22, 26, 36, 0.3);
+      color: var(--text-muted);
+      transition: all 0.3s;
+    }
+
+    .add-more-card:hover {
+      border-color: var(--accent);
+      color: var(--accent-light);
+      background: rgba(22, 26, 36, 0.6);
+    }
+
+    .add-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      background: #090b0f;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: #656b78;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .poem-card {
+        padding: 2.5rem 1.5rem;
+      }
+      .poem-stanza {
+        font-size: 1.25rem;
+        line-height: 1.85;
+      }
+      .poem-couplet {
+        font-size: 1.3rem;
+      }
+      nav {
+        gap: 1.2rem;
+      }
+      nav a {
+        font-size: 0.8rem;
+      }
+      .video-caption {
+        padding: 1.2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient light -->
+  <div class="ambient-glow"></div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="assets/favicon.jpg" alt="Cirone Logo" class="logo-img" />
+        <span class="logo-text">Cirone.org</span>
+      </a>
+      <nav>
+        <a href="#poem">Sonnet 65</a>
+        <a href="#video">Video</a>
+        <a href="#gallery">Memories</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="eyebrow">A Timeless Tribute</span>
+    <h1 class="hero-title">Ode to <span>Holli</span></h1>
+    <p class="hero-sub">
+      A celebration of eternal beauty, poetry, and song preserved through the passage of time.
+    </p>
+    <div class="divider-gold"></div>
+  </section>
+
+  <main class="container">
+
+    <!-- Poem Section -->
+    <section id="poem">
+      <div class="section-header">
+        <span class="section-eyebrow">The Word</span>
+        <h2 class="section-title">Sonnet LXV</h2>
+      </div>
+
+      <article class="poem-card">
+        <div class="poem-title">Sonnet 65</div>
+        <div class="poem-author">William Shakespeare</div>
+
+        <div class="poem-stanza">
+          <span class="drop-cap">S</span>ince brass, nor stone, nor earth, nor boundless sea<br />
+          But sad mortality o’er-sways their power,<br />
+          How with this rage shall beauty hold a plea,<br />
+          Whose action is no stronger than a flower?
+        </div>
+
+        <div class="poem-stanza">
+          O, how shall summer’s honey breath hold out<br />
+          Against the wrackful siege of batt’ring days,<br />
+          When rocks impregnable are not so stout,<br />
+          Nor gates of steel so strong, but time decays?
+        </div>
+
+        <div class="poem-stanza">
+          O fearful meditation! where, alack,<br />
+          Shall time’s best jewel from time’s chest lie hid?<br />
+          Or what strong hand can hold his swift foot back?<br />
+          Or who his spoil of beauty can forbid?
+        </div>
+
+        <div class="poem-couplet">
+          O, none, unless this miracle have might,<br />
+          That in black ink my love may still shine bright.
+        </div>
+      </article>
+    </section>
+
+    <!-- Video Theater Section -->
+    <section id="video">
+      <div class="section-header">
+        <span class="section-eyebrow">The Song</span>
+        <h2 class="section-title">Video & Melody</h2>
+      </div>
+
+      <div class="video-theater">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/z-F9k4W7OEw?rel=0&modestbranding=1&enablejsapi=1" 
+            title="Holli — Paul Cirone" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-caption">
+          <div>
+            <h3>Holli</h3>
+            <p>Performed & arranged by Paul Cirone</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=z-F9k4W7OEw" target="_blank" rel="noopener noreferrer" class="video-btn">
+            Watch on YouTube
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photography / Memories Gallery -->
+    <section id="gallery">
+      <div class="section-header">
+        <span class="section-eyebrow">The Moments</span>
+        <h2 class="section-title">Cherished Memories</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Photo 1 -->
+        <div class="gallery-card" onclick="openLightbox('assets/photo-1.jpg')">
+          <div class="gallery-img-container">
+            <img src="assets/photo-1.jpg" alt="Holli Portrait" class="gallery-img" />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Portrait I</h4>
+                <p>Click to enlarge</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="gallery-card" onclick="openLightbox('assets/photo-2.jpg')">
+          <div class="gallery-img-container">
+            <img src="assets/photo-2.jpg" alt="Holli Portrait II" class="gallery-img" />
+            <div class="gallery-overlay">
+              <div class="gallery-info">
+                <h4>Portrait II</h4>
+                <p>Click to enlarge</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Easy slot to add more photos or content later -->
+        <div class="add-more-card">
+          <div class="add-icon">+</div>
+          <p style="font-weight: 500; margin-bottom: 0.3rem;">Add More Memories</p>
+          <span style="font-size: 0.78rem;">Drop more photos into the assets folder anytime</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal for Full View -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Full size preview" />
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">CIRONE.ORG</div>
+    <p class="footer-quote">“That in black ink my love may still shine bright.”</p>
+    <p class="footer-copy">&copy; Cirone.org &bull; Dedicated to Holli</p>
+  </footer>
+
+  <script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target !== lightboxImg) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>
